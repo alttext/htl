@@ -31,3 +31,7 @@ Browser automation uses Chromium with iPhone-sized viewport and touch emulation.
 ## Playtesting improvements
 
 Added Relaxed, Standard, and Sharp difficulty, affecting public-history memory, mistakes, turn speed, and challenge timing. A visible countdown explains the challenge reaction window. Opening the guide pauses it, while browsing families does not restart it. Card selections now update the displayed request immediately. Browser checks cover difficulty persistence, countdown behavior, and desktop layout in addition to mobile interaction. User will playtest in a web browser first.
+
+## Direct browser testing route
+
+A self-contained HTML build is available through `npm run playtest`. This lets the user download and open the game in a desktop browser without hosting, a development server, or dependency installation. The standalone browser check blocks HTTP/HTTPS requests and verifies interaction with the embedded HTML. Direct file-URL navigation is blocked by the cloud browser policy, so opening a downloaded file must be confirmed in the user’s browser. Public hosting remains a separate future step.

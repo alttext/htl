@@ -1,0 +1,13 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {resolve} from 'node:path';
+const root=resolve('dist');
+let html=await readFile(resolve(root,'index.html'),'utf8');
+const js=html.match(/<script type="module" crossorigin src="([^"]+)"><\/script>/);
+const css=html.match(/<link rel="stylesheet" crossorigin href="([^"]+)">/);
+if(!js||!css)throw Error('Expected Vite JavaScript and CSS outputs');
+const script=await readFile(resolve(root,js[1].replace(/^\//,'')),'utf8');
+const styles=await readFile(resolve(root,css[1].replace(/^\//,'')),'utf8');
+html=html.replace(js[0],()=>`<script type="module">${script.replace(/<\/script/gi,'<\\/script')}</script>`);
+html=html.replace(css[0],()=>`<style>${styles}</style>`);
+await writeFile(resolve(root,'heart-the-lover-playtest.html'),html);
+console.log('Standalone game written to dist/heart-the-lover-playtest.html');

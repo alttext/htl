@@ -49,3 +49,7 @@ Each cloud task already has an isolated checkout. Use that checkout rather than 
 ## Playtesting settings
 
 Use Relaxed for seven-second challenge windows and slower, more forgetful bots. Standard gives 4.2 seconds; Sharp gives 2.4 seconds and bots with full public-history memory. Difficulty saves on this browser. Changing it takes effect for future bot actions and challenge windows. The countdown for an active challenge cannot be reset by switching family tabs. Opening the guide pauses that countdown until you return.
+
+## Download-and-open playtest
+
+`npm run playtest` builds `dist/heart-the-lover-playtest.html`: the complete game in a single file with its JavaScript and CSS embedded. Download it and open it in a desktop browser without running a server. It does not need a network connection. Start with Relaxed difficulty. Local saved progress depends on your browser permitting storage for local files; moving or renaming the file may change its storage location. Mobile file viewers may show a preview instead of executing the game; use a desktop browser for this download-and-open route.
