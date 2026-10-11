@@ -55,3 +55,18 @@ These are proposed implementation choices, not statements from the printed rules
 - Decide how players with empty hands participate and whether an initially dealt complete family may immediately declare a win. The supplied guide does not specify either edge case.
 - Start with three players and nine-card families; player-count limits are unspecified in the guide.
 - Offer a tutorial with explicit prompts, then the full challenge rules in standard play.
+
+## Prototype interpretations (implemented)
+
+The first browser prototype uses the following defaults for unspecified cases:
+
+- All dialogue is selected by touch; there is no microphone access. Addressing and acknowledgement are presented in the opponent selector.
+- A manners challenge must correspond to a recorded mistake; incorrect calls are rejected. There is a brief reaction window, and bots claim unchallenged mistakes automatically.
+- The offered card stays with its owner until a valid thanks and take sequence completes. A challenged premature touch does not transfer ownership.
+- A bonus turn ends on a failed ask. Its original saved resume player then plays, even if that player was also the bonus caller.
+- A nested challenge replaces the interrupted bonus turn and retains its saved resume player; it does not add another layer of bonus turns.
+- Empty-handed players are skipped for ordinary turns. An empty-handed caller consumes their bonus turn immediately.
+- A complete family wins automatically, including one present in the initial deal. The game ends with the first winner rather than determining a runner-up.
+- The human sits left of Electa (dealer), followed by Jos and Electa. Each receives 12 cards.
+
+These choices can be changed after playtesting. They resolve implementation ambiguities rather than claiming additional rules from the printed guide.

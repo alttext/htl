@@ -1,23 +1,47 @@
-# Heart the Lover — mobile game
+# Heart the Lover
 
-A planned mobile adaptation of the family-collecting card game described in Lily King's *Heart the Lover* and the supplied card-game guide.
+An iPhone-friendly browser game of families, memory, and impeccable manners, based on the rules supplied for the game in Lily King's *Heart the Lover*.
 
-Status: planning. No app has been implemented yet.
+## Play and develop
 
-## Direction
+Requires Node.js 22.12+ (validated with 24.19.0).
 
-- iOS and Android with Expo, React Native, and TypeScript.
-- First playable version: one human and two bots, entirely offline.
-- Preserve the distinctive etiquette, card names, and challenge mechanic.
-- Add online private rooms after the core rules and mobile interaction are proven.
+```sh
+npm ci
+npm run dev
+```
 
-See [the implementation plan](docs/PLAN.md) and [the rules specification](docs/RULES.md).
+Open the development server in your browser. On a phone on the same network, use your computer's LAN address and port 5173. This cloud onboarding interface does not provide a public game URL.
 
-## Artwork
+```sh
+npm test                 # Rules tests, including 100 seeded complete games
+npm run build            # Static production files in dist/
+npm run preview          # Serve the production build locally
+```
 
-The intended artwork source is https://lilykingbooks.com/htl-card-game.
-The supplied guide credits Sarah Steedman for the paintings and Sarah Hiers for graphic design. We have not verified a license to distribute those images in an app. Use clearly marked development placeholders until usable assets and permission are available; retain source and attribution metadata when importing approved artwork.
+Browser tests run in an iPhone-sized Chromium context:
 
-## Development environment
+```sh
+npx playwright install chromium
+npm run test:browser
+# Or use an installed Chromium:
+CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run test:browser
+```
 
-Node.js 24.19.0 and npm 11.9.0 are available in the onboarding machine. There are currently no dependency manifests, installation steps, app services, or tests. Pin an Expo-supported Node version when scaffolding the app, commit its lockfile, and use frozen installation (`npm ci`) afterward. Each cloud task already has an isolated checkout; use it rather than creating a worktree unless explicitly requested.
+In the cloud machine, add `--cache /workspace/.npm-cache` to npm installation commands when the default cache is unwritable.
+
+## First playable version
+
+- One human against Jos and Electa; all 36 cards are dealt.
+- Ask only from families in your hand. Asking for your own card as a bluff is allowed.
+- Say “Thank you” before taking an offered card, then ask again.
+- A failed ask passes the turn to the left.
+- Mistakes in wording or premature touching invite “Sir Hincomb Funnibuster!” The first caller gets a bonus turn.
+- Bots use their own hand and public request history, and occasionally make challengeable mistakes.
+- Family tabs, horizontally scrolling cards, large touch controls, tutorial, conversation history, and local saved progress.
+
+Cards are original typographic placeholders; no author-site artwork is included. No account or backend is needed. The game requires an initial page load; offline installation/PWA support is not implemented.
+
+See [rules and digital interpretations](docs/RULES.md) and [the current plan](docs/PLAN.md). The engine is separated from the UI in `src/game.js`. iPhone-sized browser tests have limited coverage and do not replace real iPhone Safari testing.
+
+Each cloud task already has an isolated checkout. Use that checkout rather than creating a worktree unless explicitly requested.
