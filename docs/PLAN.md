@@ -27,3 +27,7 @@ Start with a browser game optimized for iPhones. Artwork will be addressed later
 ## Validation limits
 
 Browser automation uses Chromium with iPhone-sized viewport and touch emulation. Actual iPhone Safari behavior still needs device testing. No speech recognition, online multiplayer, native packaging, or store submission is included in the prototype.
+
+## Playtesting improvements
+
+Added Relaxed, Standard, and Sharp difficulty, affecting public-history memory, mistakes, turn speed, and challenge timing. A visible countdown explains the challenge reaction window. Opening the guide pauses it, while browsing families does not restart it. Card selections now update the displayed request immediately. Browser checks cover difficulty persistence, countdown behavior, and desktop layout in addition to mobile interaction. User will playtest in a web browser first.

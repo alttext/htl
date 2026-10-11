@@ -45,3 +45,7 @@ Cards are original typographic placeholders; no author-site artwork is included.
 See [rules and digital interpretations](docs/RULES.md) and [the current plan](docs/PLAN.md). The engine is separated from the UI in `src/game.js`. iPhone-sized browser tests have limited coverage and do not replace real iPhone Safari testing.
 
 Each cloud task already has an isolated checkout. Use that checkout rather than creating a worktree unless explicitly requested.
+
+## Playtesting settings
+
+Use Relaxed for seven-second challenge windows and slower, more forgetful bots. Standard gives 4.2 seconds; Sharp gives 2.4 seconds and bots with full public-history memory. Difficulty saves on this browser. Changing it takes effect for future bot actions and challenge windows. The countdown for an active challenge cannot be reset by switching family tabs. Opening the guide pauses that countdown until you return.
